@@ -28,7 +28,7 @@ public class ThreadLocal2 {
                 e.printStackTrace();
             }
             tl.set(new Person());
-            System.out.println(tl.get());  //get()方法返回ThreadLocal的对象
+            System.out.println(tl.get().name);  //get()方法返回ThreadLocal的对象
         }).start();
     }
 }
@@ -37,7 +37,7 @@ class Person{
     String name;
 
     Person(){
-        this.name="张三丰";
+        this.name="渣渣辉";
     }
 }
 

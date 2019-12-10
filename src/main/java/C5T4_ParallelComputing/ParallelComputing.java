@@ -67,20 +67,16 @@ public class ParallelComputing {
             q.add(i);
         }
 
-        ExecutorService service2= Executors.newFixedThreadPool(8);
+        ExecutorService service2= Executors.newFixedThreadPool(16);
         Queue q2= new ConcurrentLinkedQueue();  // 多线程添加 比vector 要快
 
-        CountDownLatch latch= new CountDownLatch(8);
-
-        var ref = new Object() {
-            boolean flag = true;
-        };
+        CountDownLatch latch= new CountDownLatch(16);
 
         start= System.currentTimeMillis();  //计时开始
 
-        for (int i=0; i<8; i++) {
+        for (int i=0; i<16; i++) {
             service2.execute(() -> {
-                while (ref.flag) {
+                while (true) {
                     Integer k= q.poll();
                     if (k==null){
                         break;
@@ -155,5 +151,8 @@ public class ParallelComputing {
         }
 
         return results;
+    }
+
+    private static class var {
     }
 }

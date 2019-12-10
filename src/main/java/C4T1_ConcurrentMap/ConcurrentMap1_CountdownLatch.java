@@ -32,9 +32,9 @@ public class ConcurrentMap1_CountdownLatch {
 
         try{
             latch.await();    //等待latch 释放
-    } catch (InterruptedException e) {
+        } catch (InterruptedException e) {
         e.printStackTrace();
-    }
+        }
 
         long end= System.currentTimeMillis();
         System.out.println(end-start);
